@@ -21,6 +21,7 @@ import {
   DeleteOutlined
 } from '@ant-design/icons'
 import SucursalModal from './SucursalModal'
+import './ListaSucursales.css'
 
 const { Title, Text } = Typography
 
@@ -73,24 +74,17 @@ const columns = (handleAction) => [
             },
             {
               key: 'eliminar',
-              icon: <DeleteOutlined style={{ color: 'red' }} />,
-              label: <span style={{ color: 'red' }}>Eliminar sucursal</span>,
+              icon: <DeleteOutlined className="delete-icon" />,
+              label: <span className="delete-text">Eliminar sucursal</span>,
             },
           ]}
         />
       )
       return (
         <Dropdown overlay={menu} trigger={['click']}>
-          <Button 
-            type="text" 
-            style={{ border: '1px solid #d9d9d9', display: 'flex', alignItems: 'center', padding: 0 }}
-          >
-            <span style={{ padding: '4px 8px' }}>Acciones</span>
-            <span style={{ 
-              border: '1px solid #d9d9d9', 
-              padding: '4px 8px',
-              borderLeft: '1px solid #d9d9d9'
-            }}>
+          <Button type="text" className="action-button">
+            <span className="action-text">Acciones</span>
+            <span className="action-icon">
               <EllipsisOutlined />
             </span>
           </Button>
@@ -131,12 +125,19 @@ const ListaSucursales = () => {
   const [search, setSearch] = useState('')
   const [modalVisible, setModalVisible] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize] = useState(5)
 
   const filteredData = data.filter(suc =>
     suc.nombre.toLowerCase().includes(search.toLowerCase()) ||
     suc.empresa.toLowerCase().includes(search.toLowerCase()) ||
     suc.telefono.toLowerCase().includes(search.toLowerCase()) ||
     suc.id.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   )
 
   const handleAction = (action, record) => {
@@ -150,6 +151,10 @@ const ListaSucursales = () => {
       ))
     } else if (action === 'eliminar') {
       setData(data.filter(suc => suc.key !== record.key))
+      const maxPage = Math.ceil((filteredData.length - 1) / pageSize) || 1
+      if (currentPage > maxPage) {
+        setCurrentPage(maxPage)
+      }
     }
   }
 
@@ -181,25 +186,35 @@ const ListaSucursales = () => {
     setEditingSucursal(null)
   }
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+    setCurrentPage(1)
+  }
+
   return (
-    <div style={{ padding: 16, background: '#fff', borderRadius: 12, minHeight: '80vh', maxWidth: 1274, margin: '40px auto', display: 'flex', flexDirection: 'column' }}>
-      <Title level={3} style={{ marginBottom: 8, textAlign: 'left', width: '100%', fontWeight: 600 }}>
+    <div className="lista-sucursales-container">
+      <Title level={3} className="lista-sucursales-title">
         Lista de sucursales
       </Title>
-      <Row justify="space-between" align="middle" style={{ marginBottom: 16 }} gutter={[16, 16]}>
+      
+      <Row justify="space-between" align="middle" className="header-row" gutter={[16, 16]}>
         <Col xs={24} sm={24} md={12} lg={12}>
           <Input
             placeholder="Buscar sucursal por nombre"
             prefix={<SearchOutlined />}
             value={search}
-            onChange={e => setSearch(e.target.value)}
-            style={{ width: 273, height: 32 }}
+            onChange={handleSearch}
+            className="search-input"
           />
         </Col>
-        <Col xs={24} sm={24} md={12} lg={12} style={{ textAlign: 'right', marginTop: 8 }}>
-          <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
-            <Text type="secondary">
-              {data.length} empresas
+        <Col xs={24} sm={24} md={12} lg={12} className="header-actions">
+          <Space className="header-space">
+            <Text type="secondary" className="count-text">
+              {filteredData.length} empresas
             </Text>
             <Button
               type="primary"
@@ -207,28 +222,34 @@ const ListaSucursales = () => {
                 setEditingSucursal(null)
                 setModalVisible(true)
               }}
-              style={{ backgroundColor: '#262776', borderColor: '#262776', width: 215, height: 40 }}
+              className="create-button"
             >
               Crear nueva sucursal <PlusOutlined />
             </Button>
           </Space>
         </Col>
       </Row>
-      <div style={{ flex: 1 }}>
+      
+      <div className="table-wrapper">
         <Table
           columns={columns(handleAction)}
-          dataSource={filteredData}
+          dataSource={paginatedData}
           pagination={false}
           scroll={{ x: 900 }}
         />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '20px 0', marginTop: 'auto' }}>
+      
+      <div className="pagination-wrapper">
         <Pagination
-          current={1}
+          current={currentPage}
           total={filteredData.length}
-          pageSize={5}
+          pageSize={pageSize}
+          onChange={handlePageChange}
+          showSizeChanger={false}
+          showQuickJumper={false}
         />
       </div>
+      
       <SucursalModal
         visible={modalVisible}
         onCancel={() => {

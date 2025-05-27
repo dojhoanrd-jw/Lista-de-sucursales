@@ -1,14 +1,130 @@
-.ls-container {
+.lista-sucursales-container {
   padding: 16px;
   background: #fff;
   border-radius: 12px;
   min-height: 80vh;
-  width: 100%;
-  max-width: 100vw;
+  max-width: 1274px;
   margin: 40px auto;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+/* Título */
+.lista-sucursales-title {
+  margin-bottom: 8px !important;
+  text-align: left;
+  width: 100%;
+  font-weight: 600 !important;
+}
+
+/* Header */
+.header-row {
+  margin-bottom: 16px;
+}
+
+.header-actions {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.header-space {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+
+.search-input {
+  width: 273px;
+  height: 32px;
+}
+
+/* Count Text */
+.count-text {
+  font-size: 14px;
+}
+
+
+.create-button {
+  background-color: #262776 !important;
+  border-color: #262776 !important;
+  width: 215px;
+  height: 40px;
+}
+
+.create-button:hover {
+  background-color: #353593 !important;
+  border-color: #353593 !important;
+}
+
+
+.table-wrapper {
+  flex: 1;
+}
+
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+
+.action-button {
+  border: 1px solid #d9d9d9 !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.action-text {
+  padding: 4px 8px;
+}
+
+.action-icon {
+  border: 1px solid #d9d9d9;
+  padding: 4px 8px;
+  border-left: 1px solid #d9d9d9;
+}
+
+
+.delete-icon {
+  color: red;
+}
+
+.delete-text {
+  color: red;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lista-sucursales-container {
+    margin: 20px;
+    padding: 12px;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .create-button {
+    width: 100%;
+  }
+  
+  .header-actions {
+    text-align: left;
+    margin-top: 16px;
+  }
+  
+  .header-space {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pagination-wrapper {
+    justify-content: center;
+  }
 }

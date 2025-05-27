@@ -4,118 +4,97 @@
 
 .sucursal-modal .ant-modal-content {
   min-height: 400px;
-  height: 400px;
-  display: block;
+  height: auto;
+  display: flex;
+  flex-direction: column;
   align-items: unset;
   justify-content: unset;
+  background: #fff;
 }
+
+/* Modal Title */
+.modal-title {
+  font-weight: 400;
+  color: #000;
+  font-size: 18px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 8px;
+  padding: 0 24px 24px 24px;
+}
+
 
 .sucursal-modal-frame {
   width: 476px;
-  height: 200px;
-  margin: 64px auto 0 auto; 
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 64px auto 0 auto;
   background: #fff;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  border-radius: 12px;
   box-sizing: border-box;
   padding: 0;
 }
 
-.sucursal-modal-frame .modal-subtitle {
+
+.sucursal-modal .ant-modal-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Modal Subtitle */
+.modal-subtitle {
   margin: 16px 0 16px 0;
   text-align: center;
   width: 100%;
 }
 
-.sucursal-modal-frame .ant-form-item {
-  margin-bottom: 16px;
+.modal-subtitle-text {
+  margin: 0 !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  color: #555 !important;
 }
 
-.sucursal-modal-frame .ant-form-item:last-child {
-  margin-bottom: 0;
-}
-
-.sucursal-modal-frame .ant-input {
-  height: 32px !important;
-  font-size: 16px;
+/* Form */
+.modal-form {
+  margin: 0;
   width: 100%;
-}
-
-.sucursal-modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+  flex: 1;
 }
 
-.sucursal-modal-content > div {
-  width: 100%;
-  max-width: 440px;
-}
-
-.sucursal-modal-title {
-  text-align: left;
-  margin-bottom: 40px;
-  margin-top: 8px;
+.form-fields {
   width: 100%;
 }
 
-.sucursal-modal .ant-modal-header {
-  text-align: left;
+.form-item {
+  margin-bottom: 16px !important;
 }
 
-.sucursal-modal .ant-modal-title {
-  font-size: 16px;
-  font-weight: 500;
+.form-item-last {
+  margin-bottom: 0 !important;
 }
 
-.sucursal-modal-form {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+.form-input {
+  height: 32px !important;
+  font-size: 16px !important;
+  width: 100% !important;
 }
 
-.sucursal-modal-form .ant-input {
-  height: 40px;
-  font-size: 16px;
-}
-
-.sucursal-modal-form .ant-form-item {
-  margin-bottom: 32px;
-}
-
-.sucursal-modal-form .ant-form-item:last-child {
-  margin-bottom: 48px;
-}
-
-.sucursal-modal .ant-modal-footer {
-  text-align: right;
-  padding-right: 24px;
-  padding-bottom: 24px;
-}
-
-.sucursal-modal .ant-modal-footer > div {
-  justify-content: flex-end !important;
-  gap: 8px;
-}
-
-.modal-subtitle {
-  text-align: center;
-  margin: 40px 0 40px 0;
-  width: 100%;
-}
-
-.modal-subtitle h4.ant-typography {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 500;
-  color: #555;
-}
 
 .sucursal-modal .ant-btn-primary[disabled] {
   background-color: #f5f5f5 !important;

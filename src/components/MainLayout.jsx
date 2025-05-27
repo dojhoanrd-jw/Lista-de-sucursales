@@ -23,7 +23,7 @@ const MainLayout = ({ children }) => {
           items={[
             {
               key: '1',
-              icon: <RocketOutlined style={{ fontSize: '18px', color: '#6F42C1' }} />,
+              icon: <RocketOutlined className="menu-icon" />,
             }
           ]}
         />

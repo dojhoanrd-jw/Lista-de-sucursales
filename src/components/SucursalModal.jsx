@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Modal, Button, Form, Input, Typography, ConfigProvider } from 'antd'
+import './SucursalModal.css'
 
 const { Title } = Typography
 
@@ -68,12 +69,15 @@ const SucursalModal = ({
           setIsFormValid(false)
         }}
         footer={
-          <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', gap: 8, padding: '0 24px 24px 24px' }}>
-            <Button key="cancel" onClick={() => {
-              onCancel()
-              form.resetFields()
-              setIsFormValid(false)
-            }}>
+          <div className="modal-footer">
+            <Button 
+              key="cancel" 
+              onClick={() => {
+                onCancel()
+                form.resetFields()
+                setIsFormValid(false)
+              }}
+            >
               Cancelar
             </Button>
             <Button
@@ -86,63 +90,49 @@ const SucursalModal = ({
             </Button>
           </div>
         }
-        title={<span style={{ fontWeight: 400, color: '#000', fontSize: 18 }}>Crear sucursal de una empresa</span>}
+        title={<span className="modal-title">Crear sucursal de una empresa</span>}
         width={667}
         bodyStyle={{ padding: 0, minHeight: 400, height: 400 }}
         style={{ top: 64 }}
         className="sucursal-modal"
       >
-        <div
-          className="sucursal-modal-frame"
-          style={{
-            width: 476,
-            height: 200,
-            margin: '64px auto 0 auto', 
-            background: '#fff',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            borderRadius: 12,
-            boxSizing: 'border-box',
-            padding: 0
-          }}
-        >
-          <div className="modal-subtitle" style={{ margin: '16px 0 16px 0', textAlign: 'center', width: '100%' }}>
-            <Title level={4} style={{ margin: 0, fontSize: 24, fontWeight: 500, color: '#555' }}>
+        <div className="sucursal-modal-frame">
+          <div className="modal-subtitle">
+            <Title level={4} className="modal-subtitle-text">
               {editingSucursal ? 'Editar sucursal' : 'Nueva sucursal'}
             </Title>
           </div>
+          
           <Form
             form={form}
             layout="vertical"
             onFieldsChange={handleFormChange}
-            style={{ margin: 0, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+            className="modal-form"
           >
-            <div style={{ width: '100%' }}>
+            <div className="form-fields">
               <Form.Item
                 label="Nombre"
                 name="nombre"
                 rules={[{ required: true, message: 'Ingrese el nombre de la sucursal' }]}
-                style={{ marginBottom: 16 }}
+                className="form-item"
               >
-                <Input placeholder="Escribir nombre" style={{ height: 32, fontSize: 16, width: '100%' }} />
+                <Input placeholder="Escribir nombre" className="form-input" />
               </Form.Item>
               <Form.Item
                 label="Dirección"
                 name="direccion"
                 rules={[{ required: true, message: 'Ingrese la dirección' }]}
-                style={{ marginBottom: 16 }}
+                className="form-item"
               >
-                <Input placeholder="Escribir dirección" style={{ height: 32, fontSize: 16, width: '100%' }} />
+                <Input placeholder="Escribir dirección" className="form-input" />
               </Form.Item>
               <Form.Item
                 label="Teléfono"
                 name="telefono"
                 rules={[{ required: true, message: 'Ingrese el teléfono' }]}
-                style={{ marginBottom: 0 }}
+                className="form-item form-item-last"
               >
-                <Input placeholder="Escribir teléfono" style={{ height: 32, fontSize: 16, width: '100%' }} />
+                <Input placeholder="Escribir teléfono" className="form-input" />
               </Form.Item>
             </div>
           </Form>
