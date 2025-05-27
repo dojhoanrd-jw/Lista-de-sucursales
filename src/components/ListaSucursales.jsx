@@ -9,7 +9,8 @@ import {
   Row,
   Col,
   Space,
-  Badge
+  Badge,
+  Pagination
 } from 'antd'
 import {
   EllipsisOutlined,
@@ -181,7 +182,7 @@ const ListaSucursales = () => {
   }
 
   return (
-    <div style={{ padding: 16, background: '#fff', borderRadius: 12, minHeight: '80vh', maxWidth: 1274, margin: '40px auto' }}>
+    <div style={{ padding: 16, background: '#fff', borderRadius: 12, minHeight: '80vh', maxWidth: 1274, margin: '40px auto', display: 'flex', flexDirection: 'column' }}>
       <Title level={3} style={{ marginBottom: 8, textAlign: 'left', width: '100%', fontWeight: 600 }}>
         Lista de sucursales
       </Title>
@@ -213,12 +214,21 @@ const ListaSucursales = () => {
           </Space>
         </Col>
       </Row>
-      <Table
-        columns={columns(handleAction)}
-        dataSource={filteredData}
-        pagination={{ pageSize: 5, responsive: true }}
-        scroll={{ x: 900 }}
-      />
+      <div style={{ flex: 1 }}>
+        <Table
+          columns={columns(handleAction)}
+          dataSource={filteredData}
+          pagination={false}
+          scroll={{ x: 900 }}
+        />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '20px 0', marginTop: 'auto' }}>
+        <Pagination
+          current={1}
+          total={filteredData.length}
+          pageSize={5}
+        />
+      </div>
       <SucursalModal
         visible={modalVisible}
         onCancel={() => {

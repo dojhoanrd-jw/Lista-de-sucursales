@@ -68,7 +68,7 @@ const SucursalModal = ({
           setIsFormValid(false)
         }}
         footer={
-          <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', gap: 8 }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', gap: 8, padding: '0 24px 24px 24px' }}>
             <Button key="cancel" onClick={() => {
               onCancel()
               form.resetFields()
@@ -86,12 +86,30 @@ const SucursalModal = ({
             </Button>
           </div>
         }
-        title="Crear sucursal de una empresa"
-        width={520}
+        title={<span style={{ fontWeight: 400, color: '#000', fontSize: 18 }}>Crear sucursal de una empresa</span>}
+        width={667}
+        bodyStyle={{ padding: 0, minHeight: 400, height: 400 }}
+        style={{ top: 64 }}
+        className="sucursal-modal"
       >
-        <div className="sucursal-modal-content">
-          <div className="modal-subtitle">
-            <Title level={4}>
+        <div
+          className="sucursal-modal-frame"
+          style={{
+            width: 476,
+            height: 200,
+            margin: '64px auto 0 auto', 
+            background: '#fff',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            borderRadius: 12,
+            boxSizing: 'border-box',
+            padding: 0
+          }}
+        >
+          <div className="modal-subtitle" style={{ margin: '16px 0 16px 0', textAlign: 'center', width: '100%' }}>
+            <Title level={4} style={{ margin: 0, fontSize: 24, fontWeight: 500, color: '#555' }}>
               {editingSucursal ? 'Editar sucursal' : 'Nueva sucursal'}
             </Title>
           </div>
@@ -99,29 +117,34 @@ const SucursalModal = ({
             form={form}
             layout="vertical"
             onFieldsChange={handleFormChange}
-            style={{ marginTop: 24 }}
+            style={{ margin: 0, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           >
-            <Form.Item
-              label="Nombre"
-              name="nombre"
-              rules={[{ required: true, message: 'Ingrese el nombre de la sucursal' }]}
-            >
-              <Input placeholder="Nombre de la sucursal" />
-            </Form.Item>
-            <Form.Item
-              label="Dirección"
-              name="direccion"
-              rules={[{ required: true, message: 'Ingrese la dirección' }]}
-            >
-              <Input placeholder="Dirección" />
-            </Form.Item>
-            <Form.Item
-              label="Teléfono"
-              name="telefono"
-              rules={[{ required: true, message: 'Ingrese el teléfono' }]}
-            >
-              <Input placeholder="Teléfono" />
-            </Form.Item>
+            <div style={{ width: '100%' }}>
+              <Form.Item
+                label="Nombre"
+                name="nombre"
+                rules={[{ required: true, message: 'Ingrese el nombre de la sucursal' }]}
+                style={{ marginBottom: 16 }}
+              >
+                <Input placeholder="Escribir nombre" style={{ height: 32, fontSize: 16, width: '100%' }} />
+              </Form.Item>
+              <Form.Item
+                label="Dirección"
+                name="direccion"
+                rules={[{ required: true, message: 'Ingrese la dirección' }]}
+                style={{ marginBottom: 16 }}
+              >
+                <Input placeholder="Escribir dirección" style={{ height: 32, fontSize: 16, width: '100%' }} />
+              </Form.Item>
+              <Form.Item
+                label="Teléfono"
+                name="telefono"
+                rules={[{ required: true, message: 'Ingrese el teléfono' }]}
+                style={{ marginBottom: 0 }}
+              >
+                <Input placeholder="Escribir teléfono" style={{ height: 32, fontSize: 16, width: '100%' }} />
+              </Form.Item>
+            </div>
           </Form>
         </div>
       </Modal>

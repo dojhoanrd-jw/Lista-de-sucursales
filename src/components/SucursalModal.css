@@ -3,14 +3,45 @@
 }
 
 .sucursal-modal .ant-modal-content {
+  min-height: 400px;
+  height: 400px;
   display: block;
-  min-height: 529px;
+  align-items: unset;
+  justify-content: unset;
 }
 
-.sucursal-modal .ant-modal-body {
-  height: calc(529px - 110px);
-  overflow-y: auto;
-  padding: 24px;
+.sucursal-modal-frame {
+  width: 476px;
+  height: 200px;
+  margin: 64px auto 0 auto; 
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.sucursal-modal-frame .modal-subtitle {
+  margin: 16px 0 16px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.sucursal-modal-frame .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.sucursal-modal-frame .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.sucursal-modal-frame .ant-input {
+  height: 32px !important;
+  font-size: 16px;
+  width: 100%;
 }
 
 .sucursal-modal-content {
@@ -18,7 +49,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 24px;
+  padding: 0;
+  margin: 0;
 }
 
 .sucursal-modal-content > div {
@@ -49,12 +81,12 @@
 }
 
 .sucursal-modal-form .ant-input {
-  height: 32px;
-  font-size: 14px;
+  height: 40px;
+  font-size: 16px;
 }
 
 .sucursal-modal-form .ant-form-item {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .sucursal-modal-form .ant-form-item:last-child {
@@ -64,22 +96,25 @@
 .sucursal-modal .ant-modal-footer {
   text-align: right;
   padding-right: 24px;
+  padding-bottom: 24px;
 }
 
 .sucursal-modal .ant-modal-footer > div {
   justify-content: flex-end !important;
+  gap: 8px;
 }
 
 .modal-subtitle {
   text-align: center;
-  margin: 24px 0 40px 0;
+  margin: 40px 0 40px 0;
   width: 100%;
 }
 
 .modal-subtitle h4.ant-typography {
   margin: 0;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 500;
+  color: #555;
 }
 
 .sucursal-modal .ant-btn-primary[disabled] {
