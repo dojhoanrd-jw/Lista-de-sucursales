@@ -52,6 +52,8 @@ const SucursalModal = ({
             titleFontSize: 20,
           },
           Button: {
+            colorPrimary: '#262776',
+            colorPrimaryHover: '#353593',
             colorTextDisabled: '#00000040',
             colorBgContainerDisabled: '#f5f5f5',
           }

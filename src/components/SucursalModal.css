@@ -97,3 +97,10 @@
   background-color: #353593 !important;
   border-color: #353593 !important;
 }
+
+.sucursal-modal .ant-btn-primary:not([disabled]):active,
+.sucursal-modal .ant-btn-primary:not([disabled]):focus {
+  background-color: #262776 !important;
+  border-color: #262776 !important;
+  box-shadow: 0 0 0 2px rgba(38, 39, 118, 0.2) !important;
+}
