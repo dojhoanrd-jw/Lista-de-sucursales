@@ -16,9 +16,6 @@ const MainLayout = ({ children }) => {
         collapsedWidth={58}
         className="main-layout-sider"
       >
-        <div className="logo-container">
-          <img src="/logo.png" alt="Logo" className="logo" />
-        </div>
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
