@@ -190,7 +190,7 @@ const ListaSucursales = () => {
           <Col xs={24} sm={24} md={12} lg={12} style={{ textAlign: 'right', marginTop: 8 }}>
             <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
               <Text type="secondary">
-                {data.length} sucursales encontradas
+                {data.length} empresas
               </Text>
               <Button
                 type="primary"

@@ -1,11 +1,15 @@
+import React from 'react';
 import './App.css'
-import ListaSucursales from './components/ListaSucursales'
+import MainLayout from './components/MainLayout';
+import ListaSucursales from './components/ListaSucursales';
 
 function App() {
   
   return (
-       <ListaSucursales />
-  )
+    <MainLayout>
+      <ListaSucursales />
+    </MainLayout>
+  );
 }
 
 export default App
