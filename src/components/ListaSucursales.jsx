@@ -80,8 +80,18 @@ const columns = (handleAction) => [
       )
       return (
         <Dropdown overlay={menu} trigger={['click']}>
-          <Button type="text" icon={<EllipsisOutlined />}>
-            Acciones
+          <Button 
+            type="text" 
+            style={{ border: '1px solid #d9d9d9', display: 'flex', alignItems: 'center', padding: 0 }}
+          >
+            <span style={{ padding: '4px 8px' }}>Acciones</span>
+            <span style={{ 
+              border: '1px solid #d9d9d9', 
+              padding: '4px 8px',
+              borderLeft: '1px solid #d9d9d9'
+            }}>
+              <EllipsisOutlined />
+            </span>
           </Button>
         </Dropdown>
       )
@@ -178,10 +188,11 @@ const ListaSucursales = () => {
       <Row justify="space-between" align="middle" style={{ marginBottom: 16 }} gutter={[16, 16]}>
         <Col xs={24} sm={24} md={12} lg={12}>
           <Input
-            placeholder="Buscar sucursal"
+            placeholder="Buscar sucursal por nombre"
             prefix={<SearchOutlined />}
             value={search}
             onChange={e => setSearch(e.target.value)}
+            style={{ width: 273, height: 32 }}
           />
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} style={{ textAlign: 'right', marginTop: 8 }}>
@@ -191,14 +202,13 @@ const ListaSucursales = () => {
             </Text>
             <Button
               type="primary"
-              icon={<PlusOutlined />}
               onClick={() => {
                 setEditingSucursal(null)
                 setModalVisible(true)
               }}
-              style={{ backgroundColor: '#262776', borderColor: '#262776' }}
+              style={{ backgroundColor: '#262776', borderColor: '#262776', width: 215, height: 40 }}
             >
-              Crear sucursal
+              Crear nueva sucursal <PlusOutlined />
             </Button>
           </Space>
         </Col>
